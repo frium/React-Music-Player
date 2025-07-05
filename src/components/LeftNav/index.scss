@@ -1,0 +1,33 @@
+.active {
+  background-color: #c35657;
+}
+
+.left-nav {
+  display: flex;
+  flex-direction: column;
+  width: 215px;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #e6e6e6;
+  .title {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
+  .link {
+    display: flex;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    img {
+      width: 18px;
+    }
+  }
+  hr {
+    margin-top: 10px;
+    border: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+  }
+}

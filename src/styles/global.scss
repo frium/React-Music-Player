@@ -1,0 +1,87 @@
+/* 全局重置 & 盒模型 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML & Body 基础设置 */
+html,
+body {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('https://static.frium.top/blog/%E7%BD%91%E6%98%93%E4%BA%91%E8%83%8C%E6%99%AF.jpg')
+      no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+html {
+  overflow-y: overlay;
+}
+
+/* 超链接默认样式 */
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: color 0.2s ease-in-out;
+}
+
+/* 表单元素 */
+input,
+textarea,
+button,
+select {
+  font: inherit;
+  outline: none;
+  border: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 列表 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 图片 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 额外优化 */
+#app {
+  user-select: none;
+}
+
+i {
+  font-style: normal;
+}
