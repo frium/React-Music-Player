@@ -1,6 +1,7 @@
 import { searchMusicAPI } from '@/api/music';
 import React, { memo } from 'react';
 import type { FC, ReactNode } from 'react';
+import './index.scss';
 
 interface IProps {
   children?: ReactNode;

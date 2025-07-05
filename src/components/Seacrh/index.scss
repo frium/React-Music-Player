@@ -1,0 +1,19 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 250px;
+  height: 35px;
+  border: 1px solid #475258;
+  border-radius: 6px;
+  padding: 3px 0 3px 15px;
+  color: #808c8f;
+  img {
+    width: 23px;
+  }
+  .search-input {
+    background-color: transparent;
+    color: #fff;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,11 @@
+.top-nav {
+  display: flex;
+  .top-nav-left {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+    .setting {
+      width: 20px;
+    }
+  }
+}
