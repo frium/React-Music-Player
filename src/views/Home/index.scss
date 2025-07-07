@@ -1,9 +1,19 @@
-.recommend-list-box-h3 {
-  margin-top: 10px;
-}
+.home {
+  width: 100%;
+  .recommend-list-box-h3 {
+    margin-top: 10px;
+  }
 
-.recommend-list-box {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
+  .recommend-list-box {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .top-list-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+  }
 }

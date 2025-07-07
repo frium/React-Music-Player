@@ -4,11 +4,14 @@
   width: 100vw;
   min-width: 1500px;
   .left {
-    flex-basis: 15%;
+    flex-basis: 15vw;
   }
   .right {
-    flex-basis: 85%;
+    flex-basis: 85vw;
     padding: 20px 3vw;
+  }
+  .main {
+    width: 100%;
   }
 
   @media (min-width: 1550px) {

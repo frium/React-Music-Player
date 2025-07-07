@@ -13,3 +13,16 @@ export function getRecommendMusicAPI() {
     url: '/recommend/resource'
   });
 }
+export function getTopListMusicAPI() {
+  return request({
+    method: 'GET',
+    url: '/toplist'
+  });
+}
+export function getMusicListDetailAPI(id: string) {
+  return request({
+    method: 'GET',
+    url: '/playlist/detail',
+    params: { id }
+  });
+}
