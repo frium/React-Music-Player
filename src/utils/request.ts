@@ -1,8 +1,9 @@
 import axios from 'axios';
-
-axios.defaults.baseURL = 'https://163api.qijieya.cn/';
+import { message } from 'antd';
+axios.defaults.baseURL = 'https://music.frium.top/api';
 axios.defaults.timeout = 10000;
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.withCredentials = true;
 axios.defaults.transformRequest = (data) => {
   const params = new URLSearchParams();
   for (const key in data) {
@@ -12,7 +13,14 @@ axios.defaults.transformRequest = (data) => {
   }
   return params.toString();
 };
-axios.defaults.withCredentials = true; // 跨域
+
+axios.interceptors.request.use((config) => {
+  const musicU = localStorage.getItem('cookie');
+  if (musicU) {
+    config.headers['X-Auth-Token'] = musicU;
+  }
+  return config;
+});
 
 /**
  * 设置响应拦截器
@@ -20,7 +28,7 @@ axios.defaults.withCredentials = true; // 跨域
 axios.interceptors.response.use(
   (response) => {
     const { data } = response;
-    return data.result; // 直接返回响应数据
+    return data; // 直接返回响应数据
   },
   (error) => {
     const { response } = error;
@@ -28,8 +36,7 @@ axios.interceptors.response.use(
     if (response) {
       const { data } = response;
       if (data) {
-        console.error('API Error:', data.message || '未知错误');
-
+        message.error('API Error:', data.message || '未知错误');
         // 根据错误码处理
         switch (data.code) {
           case 503:
@@ -42,15 +49,15 @@ axios.interceptors.response.use(
             break;
         }
       } else {
-        console.error('请求超时，请稍后重试');
+        message.error('请求超时，请稍后重试');
       }
     } else {
       if (!window.navigator.onLine) {
-        console.error('网络连接已断开');
+        message.error('网络连接已断开');
         // 跳转到断网页面
         return;
       }
-      console.error('服务器错误');
+      message.error('服务器错误');
     }
 
     return Promise.reject(error);
