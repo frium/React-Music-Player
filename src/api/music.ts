@@ -7,3 +7,9 @@ export function searchMusicAPI(keywords: string) {
     params: { keywords }
   });
 }
+export function getRecommendMusicAPI() {
+  return request({
+    method: 'GET',
+    url: '/recommend/resource'
+  });
+}
