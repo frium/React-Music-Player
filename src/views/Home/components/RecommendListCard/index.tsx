@@ -27,11 +27,7 @@ const RecommendListCard: FC<IProps> = ({ data }) => {
     img.onload = () => {
       const colorThief = new ColorThief();
       const [r, g, b] = colorThief.getColor(img);
-      setDominantColor([
-        Math.abs(200 - r),
-        Math.abs(200 - g),
-        Math.abs(200 - b)
-      ]);
+      setDominantColor([Math.abs(r), Math.abs(g), Math.abs(b)]);
     };
   }, [data.picUrl]);
 

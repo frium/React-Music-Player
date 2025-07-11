@@ -26,3 +26,10 @@ export function getMusicListDetailAPI(id: string) {
     params: { id }
   });
 }
+
+export function getRecommendSongsAPI() {
+  return request({
+    method: 'GET',
+    url: '/recommend/songs'
+  });
+}

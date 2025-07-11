@@ -20,13 +20,24 @@ interface MusicDetail {
 
 const TopList: FC<IProps> = ({ data }) => {
   const [musicDetailList, setMusicDetailList] = useState<MusicDetail[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getMusicListDetail = async () => {
-      const res = (await getMusicListDetailAPI(data.id)) as any;
-      setMusicDetailList(res.playlist.tracks);
+      try {
+        const res = (await getMusicListDetailAPI(data.id)) as any;
+        setMusicDetailList(res.playlist.tracks);
+      } finally {
+        setLoading(false);
+      }
     };
     getMusicListDetail();
-  }, []);
+  }, [data.id]);
+
+  if (loading || musicDetailList.length === 0) {
+    return null;
+  }
+
   return (
     <div className="top-list">
       <div className="top">
@@ -35,9 +46,21 @@ const TopList: FC<IProps> = ({ data }) => {
       </div>
       <div className="bottom">
         <div className="bottom-left">
-          <img className="img1" src={musicDetailList[0]?.al.picUrl} alt="" />
-          <img className="img2" src={musicDetailList[1]?.al.picUrl} alt="" />
-          <img className="img3" src={musicDetailList[2]?.al.picUrl} alt="" />
+          <img
+            className="img1"
+            src={musicDetailList[0]?.al.picUrl ?? ''}
+            alt=""
+          />
+          <img
+            className="img2"
+            src={musicDetailList[1]?.al.picUrl ?? ''}
+            alt=""
+          />
+          <img
+            className="img3"
+            src={musicDetailList[2]?.al.picUrl ?? ''}
+            alt=""
+          />
         </div>
         <ul className="bottom-right">
           <li>

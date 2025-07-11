@@ -1,10 +1,15 @@
-import { getRecommendMusicAPI, getTopListMusicAPI } from '@/api/music';
+import {
+  getRecommendMusicAPI,
+  getRecommendSongsAPI,
+  getTopListMusicAPI
+} from '@/api/music';
 import React, { memo, useEffect, useState } from 'react';
 import type { FC, ReactNode } from 'react';
 import RecomendListCard from './components/RecommendListCard';
 
 import './index.scss';
 import Toplist from './components/Toplist';
+import RecommendSong from './components/RecommendSong';
 
 interface IProps {
   children?: ReactNode;
@@ -13,6 +18,7 @@ interface IProps {
 const Home: FC<IProps> = () => {
   const [recommendList, setRecommendList] = useState([]);
   const [topList, setTopListList] = useState([]);
+  const [recommendSongs, setRecommendSongsList] = useState([]);
   useEffect(() => {
     const getRecommendMusic = async () => {
       const res = (await getRecommendMusicAPI()) as any;
@@ -20,11 +26,16 @@ const Home: FC<IProps> = () => {
     };
     const getTopMusicList = async () => {
       const res = (await getTopListMusicAPI()) as any;
-      console.log('榜单音乐：', res);
       setTopListList(res.list);
+    };
+    const getRecommendSongs = async () => {
+      const res = (await getRecommendSongsAPI()) as any;
+      console.log('推荐音乐', res);
+      setRecommendSongsList(res.data.dailySongs);
     };
     getTopMusicList();
     getRecommendMusic();
+    getRecommendSongs();
   }, []);
 
   return (
@@ -37,8 +48,14 @@ const Home: FC<IProps> = () => {
       </div>
       <h3 className="recommend-list-box-h3">榜单精选</h3>
       <div className="top-list-box">
-        {topList.slice(0, 6).map((item, index) => (
+        {topList?.slice(0, 6)?.map((item, index) => (
           <Toplist key={index} data={item} />
+        ))}
+      </div>
+      <h3 className="recommend-list-box-h3">每日推荐单曲</h3>
+      <div className="recommend-song-box">
+        {recommendSongs.slice(0, 10).map((item, index) => (
+          <RecommendSong key={index} data={item} />
         ))}
       </div>
     </div>

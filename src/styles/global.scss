@@ -85,3 +85,23 @@ img {
 i {
   font-style: normal;
 }
+
+/* 滚动条优化 */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(53, 45, 45, 1);
+  border-radius: 4px;
+  transition: border-radius 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
