@@ -33,3 +33,26 @@ export function getRecommendSongsAPI() {
     url: '/recommend/songs'
   });
 }
+export function getLyricAPI(id: string) {
+  return request({
+    method: 'GET',
+    url: '/lyric',
+    params: { id }
+  });
+}
+
+export function getMusicUrlAPI(id: string) {
+  return request({
+    method: 'GET',
+    url: '/song/url',
+    params: { id }
+  });
+}
+
+export function getSongDetailAPI(ids: string) {
+  return request({
+    method: 'GET',
+    url: '/song/detail',
+    params: { ids }
+  });
+}

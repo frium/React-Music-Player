@@ -20,8 +20,6 @@ const RecommendListCard: FC<IProps> = ({ data }) => {
   >(null);
   useEffect(() => {
     const img = imgRef.current;
-    console.log(img);
-
     if (!img) return;
     img.crossOrigin = 'Anonymous'; // 必须跨域
     img.onload = () => {

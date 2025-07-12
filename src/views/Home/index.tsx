@@ -30,7 +30,6 @@ const Home: FC<IProps> = () => {
     };
     const getRecommendSongs = async () => {
       const res = (await getRecommendSongsAPI()) as any;
-      console.log('推荐音乐', res);
       setRecommendSongsList(res.data.dailySongs);
     };
     getTopMusicList();
