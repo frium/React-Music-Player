@@ -1,26 +1,34 @@
 .App {
   position: relative;
-  display: flex;
   min-height: 100vh;
   min-width: 1500px;
-  .left {
-    position: sticky;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    flex-basis: 15%;
-  }
-  .right {
-    flex-basis: 85%;
-    padding: 20px 3vw 40px 3vw;
-  }
-  .main {
-    width: 100%;
-  }
-
-  @media (min-width: 1550px) {
-    .right {
-      padding: 20px 7vw 40px 7vw;
+  .app-top {
+    display: flex;
+    .app-left {
+      position: sticky;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      flex-basis: 15%;
     }
+    .app-right {
+      flex-basis: 85%;
+      padding: 20px 3vw 120px 3vw;
+    }
+    .main {
+      width: 100%;
+    }
+
+    @media (min-width: 1550px) {
+      .app-right {
+        padding: 20px 7vw 120px 7vw;
+      }
+    }
+  }
+  .app-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
   }
 }

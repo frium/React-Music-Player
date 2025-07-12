@@ -4,17 +4,23 @@ import routes from './router';
 import LeftNav from '@/components/LeftNav';
 import './App.scss';
 import TopNav from './components/TopNav';
+import BottomPlayer from './components/BottomPlayer';
 function App() {
   return (
     <div className="App">
-      <div className="left">
-        <LeftNav />
+      <div className="app-top">
+        <div className="app-left">
+          <LeftNav />
+        </div>
+        <div className="app-right">
+          <TopNav />
+          <Suspense fallback="">
+            <div className="main">{useRoutes(routes)}</div>
+          </Suspense>
+        </div>
       </div>
-      <div className="right">
-        <TopNav />
-        <Suspense fallback="">
-          <div className="main">{useRoutes(routes)}</div>
-        </Suspense>
+      <div className="app-bottom">
+        <BottomPlayer />
       </div>
     </div>
   );
